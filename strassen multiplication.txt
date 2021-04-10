@@ -1,0 +1,37 @@
+import numpy
+
+rows,coloumn=map(int,input("enter the number of rows and coloumn ").split(" "))
+
+A_input = list(map(int,input("enter elements of matrix A ").split(" ")))
+
+A_matrix= numpy.array(A_input).reshape(rows,coloumn)
+
+B_input = list(map(int,input("enter elements of matrix B ").split(" ")))
+
+B_matrix= numpy.array(B_input).reshape(rows,coloumn)
+
+print("Matrix A")
+print(A_matrix)
+print("Matrix B")
+print(B_matrix)
+
+m1= (A_matrix[0][0] + A_matrix[1][1]) * (B_matrix[0][0] + B_matrix[1][1])
+m2= (A_matrix[1][0] + A_matrix[1][1]) * B_matrix[0][0]
+m3= A_matrix[0][0] * (B_matrix[0][1] - B_matrix[1][1])
+m4= A_matrix[1][1] * (B_matrix[1][0] - B_matrix[0][0])
+m5= (A_matrix[0][0] + A_matrix[0][1]) * B_matrix[1][1]
+m6= (A_matrix[1][0] - A_matrix[0][0]) * (B_matrix[0][0]+B_matrix[0][1])
+m7= (A_matrix[0][1] - A_matrix[1][1]) * (B_matrix[1][0]+B_matrix[1][1])
+
+c= []
+
+c.append(m1 + m4- m5 + m7)
+c.append(m3 + m5)
+c.append(m2 + m4)
+c.append(m1 - m2 + m3 + m6)
+
+C_matrix = numpy.array(c).reshape(rows,coloumn)
+
+print("Multiplied Matrix")
+print(C_matrix)
+

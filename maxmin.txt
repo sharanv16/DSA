@@ -1,0 +1,38 @@
+def maxmin(a,i,j,Min,Max):
+    
+    if i==j:
+        Max,Min=a[i]
+        return Max,Min
+    
+    elif j-i==1:
+        if a[i]>a[j]:
+            if Max<a[i]:
+                Max=a[i]
+            if Min>a[j]:
+                Min=a[j]
+        
+        
+        else:
+            if a[j]>a[i]:
+                if Max<a[j]:
+                    Max=a[j]
+                if Min>a[i]:
+                    Min=a[i]
+        
+        return Max,Min    
+    
+    
+    else:
+        mid = (i+j)//2
+        
+        Max,Min=maxmin(a,i,mid,Min,Max)
+        Max,Min=maxmin(a,mid+1,j,Min,Max)
+        
+        return Max,Min
+        
+if __name__=="__main__":
+    a=[1,2,5,3,7,9,4,0]
+    maximum,minimum=a[0],a[0]
+    small,large=maxmin(a,0,len(a)-1,minimum,maximum)
+    print("smallest value = ",small)
+    print("largest value = ",large)
